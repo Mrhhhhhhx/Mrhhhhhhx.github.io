@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[xpath_tbody]]></title>
+    <url>%2F2019%2F04%2F15%2Fxpath-tbody%2F</url>
+    <content type="text"><![CDATA[最近在写爬虫的时候，遇到一个坑，决定记录下来 如图所示，我想要爬取的数据都存在tbody下面的tr标签内 这是我写的xpath语句 1//table[@class=&quot;table topic-list&quot;]/tbody//tr 输出测试，结果显示为空？ 可是f12下查看数据包发送过程，发现关键数据也不是通过ajax传输的，那么继续测试 1//table[@class=&quot;table topic-list&quot;] 结果table标签能够定位到，那么问题就出在tbody标签上 1//table[@class=&quot;table topic-list&quot;]/tbody 果然是tbody的问题，那么试着跳过 1//table[@class=&quot;table topic-list&quot;]//tr 成了 上网找一下原因，结果是浏览器对html文本进行解析时会进行一定的规范化，所以自动加上了tbody标签 emmm,那么结论就是下次遇到类似情况，跳过就完事了]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>爬虫</tag>
+        <tag>踩坑</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[信息收集-找后台]]></title>
     <url>%2F2019%2F03%2F18%2Finformation-houtai%2F</url>
     <content type="text"><![CDATA[寻找后台的意义1.看是否存在弱口令漏洞，或者万能密码之类的注入漏洞 2.是否存在未授权访问后台漏洞 3.其他未知漏洞 常见方法 图片路径在寻找某个站的后台时，试了常规的方法并没有找到，这时随便打开一张图片，观察路径 网站/cms/js/ewebeditor/uploadfile/20180615215117229.JPG 这个时候尝试访问 网站/cms 成功访问 爬虫遍历awvs，burp的爬虫模块都能够对网站总体目录进行爬取，那么也许就能爬取到后台地址 字典扫一般就是御剑这样的工具配合字典去访问网站 google hack一般使用如下的google语法 1site:目标网站 inurl:admim 1site:目标网站 inurl:system 1site:目标网站 inurl:console 1site:目标网站 inurl:manage 1site:目标网站 inurl:login cms通用识别出网站是什么cms，就可能通过cms默认的路径去访问到后台，比如说dedecms的后台地址就是 网站/admin等 数据库log如果能够获取到目标网站的数据库log文件，那么就有可能通过记录看到后台位置 短文件漏洞漏洞成因 这篇博文已经说得很清楚了，附上链接 大佬文章 这里再附上这位大佬写的工具 github地址 之所以最后讲这种方法，因为这种方法存在缺陷，只能猜解前六位，以及扩展名的前3位，并且如果文件名称比较短的话是没有短文件名的]]></content>
