@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[xpath_tbody]]></title>
+    <title><![CDATA[xpath无法定位tbody标签]]></title>
     <url>%2F2019%2F04%2F15%2Fxpath-tbody%2F</url>
     <content type="text"><![CDATA[最近在写爬虫的时候，遇到一个坑，决定记录下来 如图所示，我想要爬取的数据都存在tbody下面的tr标签内 这是我写的xpath语句 1//table[@class=&quot;table topic-list&quot;]/tbody//tr 输出测试，结果显示为空？ 可是f12下查看数据包发送过程，发现关键数据也不是通过ajax传输的，那么继续测试 1//table[@class=&quot;table topic-list&quot;] 结果table标签能够定位到，那么问题就出在tbody标签上 1//table[@class=&quot;table topic-list&quot;]/tbody 果然是tbody的问题，那么试着跳过 1//table[@class=&quot;table topic-list&quot;]//tr 成了 上网找一下原因，结果是浏览器对html文本进行解析时会进行一定的规范化，所以自动加上了tbody标签 emmm,那么结论就是下次遇到类似情况，跳过就完事了]]></content>
       <categories>
